@@ -10,6 +10,7 @@ const Attach = () => {
       console.log("Uploaded a file");
     });
   };
+
   return (
     <div className="attach-container">
       <label className="custom-file-upload">

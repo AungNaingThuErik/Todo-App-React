@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import db from "./firebase";
+import Attach from "./Attach";
 
 export default function Form() {
   const [title, setTitle] = useState("");
 
+  // var userId = db.auth().currentUser.uid;
+  // console.log(userId);
+
   const handleOnChange = (e) => {
-    if (title) {
-      alert("Please Enter Todo");
-      return;
-    }
-    //Checked Successfully
-    alert("Success");
     setTitle(e.target.value);
   };
 
   const createTodo = () => {
+    var userId = db.auth().currentUser.uid; //current user id
     const todoRef = db.database().ref("Todo");
     const todo = {
       title,
@@ -23,9 +22,6 @@ export default function Form() {
 
     todoRef.push(todo);
     console.log("Create");
-
-    var userId = db.auth().currentUser.uid;
-    console.log(userId);
   };
   return (
     <div className="form-container">
@@ -33,6 +29,7 @@ export default function Form() {
       <button className="form-btn" onClick={createTodo}>
         Add Todo
       </button>
+      <Attach />
     </div>
   );
 }

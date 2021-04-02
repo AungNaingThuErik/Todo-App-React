@@ -1,6 +1,5 @@
 import React from "react";
-import Attach from "./Attach";
-import db from "./firebase";
+
 import Form from "./Form";
 import TodoList from "./TodoList";
 const Home = ({ handleLogout }) => {
@@ -13,7 +12,6 @@ const Home = ({ handleLogout }) => {
       <div className="hero-container">
         <Form />
         <TodoList />
-        <Attach />
       </div>
     </section>
   );
