@@ -162,6 +162,7 @@ button {
 
 .Todo-container .complete {
     text-decoration: line-through;
+    text-decoration-color: #4BB543;
 }
 
 .attach-container {

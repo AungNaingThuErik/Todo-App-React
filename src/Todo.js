@@ -3,8 +3,6 @@ import fire from "./Firebase/firebase";
 import "./App.css";
 
 export default function Todo({ todo }) {
-  const [hasChecked, setHasChecked] = useState(false);
-
   //delete
   const deleteTodo = () => {
     const todoRef = fire.database().ref("Todo").child(todo.id);
@@ -16,7 +14,6 @@ export default function Todo({ todo }) {
     todoRef.update({
       complete: !todo.complete,
     });
-    setHasChecked(!hasChecked);
   };
 
   return (
@@ -28,7 +25,7 @@ export default function Todo({ todo }) {
             Delete
           </button>
           <button className="action_btn" onClick={completeTodo}>
-            {hasChecked ? "Check" : "Uncheck"}
+            {!todo.complete ? "Check" : "Uncheck"}
           </button>
         </div>
       </div>
