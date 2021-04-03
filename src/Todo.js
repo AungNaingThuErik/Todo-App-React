@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import fire from "./Firebase/firebase";
+import React from "react";
+import db from "./Firebase/firebase";
 import "./App.css";
 
 export default function Todo({ todo }) {
   //delete
   const deleteTodo = () => {
-    const todoRef = fire.database().ref("Todo").child(todo.id);
+    const todoRef = db.database().ref("Todo").child(todo.id);
     todoRef.remove();
   };
   //update
   const completeTodo = () => {
-    const todoRef = fire.database().ref("Todo").child(todo.id);
+    const todoRef = db.database().ref("Todo").child(todo.id);
     todoRef.update({
       complete: !todo.complete,
     });

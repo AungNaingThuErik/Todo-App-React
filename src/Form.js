@@ -10,6 +10,7 @@ export default function Form() {
   //create todos and save it in database
   const createTodo = () => {
     var userId = db.auth().currentUser.uid; //current user id
+
     const todoRef = db.database().ref("Todo");
     const todo = {
       userId,
@@ -17,7 +18,6 @@ export default function Form() {
       complete: false,
     };
     todoRef.push(todo);
-    console.log("Create");
   };
   return (
     <div className="form-container">
