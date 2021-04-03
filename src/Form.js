@@ -16,10 +16,10 @@ export default function Form() {
     var userId = db.auth().currentUser.uid; //current user id
     const todoRef = db.database().ref("Todo");
     const todo = {
+      userId,
       title,
       complete: false,
     };
-
     todoRef.push(todo);
     console.log("Create");
   };

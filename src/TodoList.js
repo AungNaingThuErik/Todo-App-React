@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import fire from "./firebase";
+import db from "./firebase";
 import Todo from "./Todo";
 
 export default function TodoList() {
   const [todoList, setTodoList] = useState();
 
   useEffect(() => {
-    const todoRef = fire.database().ref("Todo");
+    const todoRef = db.database().ref("Todo");
     todoRef.on("value", (snapshot) => {
       const todos = snapshot.val();
       const todoList = [];
@@ -17,10 +17,20 @@ export default function TodoList() {
     });
   }, []);
 
+  var userId = db.auth().currentUser.uid;
+
+  var filteredList = [];
+
+  todoList?.forEach((element) => {
+    if (element.userId === userId) {
+      filteredList.push(element);
+    }
+  });
+
   return (
     <div>
-      {todoList
-        ? todoList.map((todo, index) => <Todo todo={todo} key={index} />)
+      {filteredList
+        ? filteredList.map((todo, index) => <Todo todo={todo} key={index} />)
         : ""}
     </div>
   );
