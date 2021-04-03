@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import LogIn from "./LogIn";
 import Home from "./Home";
-import db from "./firebase";
+import db from "./Firebase/firebase";
 const App = () => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
