@@ -13,13 +13,19 @@ button {
     border: none;
     outline: none;
     width: 100%;
-    padding: 15px 0;
-    /* margin: 5px; */
+    padding: 10px 20px;
     color: #fff;
     font-size: 16px;
     letter-spacing: 1px;
     background: #603bbb;
     cursor: pointer;
+    text-align: center;
+    transition: all .25s ease;
+}
+
+button:hover {
+    color: #603bbb;
+    background: #fff;
 }
 
 .login {
@@ -136,9 +142,14 @@ button {
     color: white;
 }
 
+.custom-file-upload:hover {
+    color: #603bbb;
+    background: #fff;
+}
+
 .form-container {
     display: flex;
-    flex-direction: co;
+    flex-direction: row;
     margin: 15px 5px;
 }
 
@@ -150,19 +161,26 @@ button {
 
 .Todo-container .buttons {
     width: 100px;
-    margin: 5;
+    margin: 5px;
     display: inline;
 }
 
 .Todo-container .action_btn {
-    width: 200px;
+    width: 100px;
     margin: 5px;
     display: inline;
+    justify-content: center;
 }
 
 .Todo-container .complete {
     text-decoration: line-through;
     text-decoration-color: #4BB543;
+}
+
+.Todo-container .Todo-img {
+    height: 100;
+    width: 100;
+    /* display: none; */
 }
 
 .attach-container {
