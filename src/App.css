@@ -149,6 +149,7 @@ button:hover {
 
 .form-container {
     display: flex;
+    text-align: center;
     flex-direction: row;
     margin: 15px 5px;
 }
@@ -180,7 +181,6 @@ button:hover {
 .Todo-container .Todo-img {
     height: 100px;
     width: 100px;
-    /* display: none; */
 }
 
 .attach-container {

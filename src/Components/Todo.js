@@ -8,6 +8,7 @@ export default function Todo({ todo }) {
   const deleteTodo = () => {
     const todoRef = db.database().ref("Todo").child(todo.id);
     todoRef.remove();
+    setFileShow("");
   };
 
   //update
@@ -33,16 +34,12 @@ export default function Todo({ todo }) {
 
   return (
     <div className="Todo-container">
-      {/* {showFile ? (
+      {fileShow ? (
         <>
-          <img
-            className="Todo-img"
-            src="https://via.placeholder.com/100x100"
-            alt="Uploaded Images"
-          />
+          <img className="Todo-img" src={fileShow} alt="Uploaded File" />
         </>
-      ) : null} */}
-      <img className="Todo-img" src={fileShow} alt="file" />
+      ) : null}
+      {/* <img className="Todo-img" src={fileShow || ""} alt="file" /> */}
 
       <h1 className={todo.complete ? "complete" : ""}>{todo.title}</h1>
 
