@@ -10,7 +10,9 @@ export default function Todo({ todo }) {
     var todoRef = db.database().ref("Todo").child(todo.id);
     todoRef.on("value", function (snapshot) {
       var todoList = snapshot.val();
-      setTodoImage(todoList.fileReference);
+      if (!!todoList) {
+        setTodoImage(todoList.fileReference);
+      }
     });
   });
   //delete
@@ -36,7 +38,9 @@ export default function Todo({ todo }) {
       // console.log("Title: " + todoList.title);
       // console.log("Complete: " + todoList.complete);
       // console.log("File Ref: " + todoList.fileReference);
-      setFileShow(todoList.fileReference);
+      if (!!todoList) {
+        setFileShow(todoList.fileReference);
+      }
       // console.log(setFileShow(todoList.fileReference));
     });
   };
