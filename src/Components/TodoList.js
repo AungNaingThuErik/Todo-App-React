@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import db from "./Firebase/firebase";
+import db from "../Firebase/firebase";
 import Todo from "./Todo";
 
 export default function TodoList() {

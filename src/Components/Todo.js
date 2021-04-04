@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import db from "./Firebase/firebase";
-import "./App.css";
+import db from "../Firebase/firebase";
+import "../App.css";
 
 export default function Todo({ todo }) {
   const [fileShow, setFileShow] = useState("");
@@ -25,9 +25,9 @@ export default function Todo({ todo }) {
       var todoList = snapshot.val();
       // console.log("Title: " + todoList.title);
       // console.log("Complete: " + todoList.complete);
-      console.log("File Ref: " + todoList.fileReference);
+      // console.log("File Ref: " + todoList.fileReference);
       setFileShow(todoList.fileReference);
-      console.log(setFileShow(todoList.fileReference));
+      // console.log(setFileShow(todoList.fileReference));
     });
   };
 

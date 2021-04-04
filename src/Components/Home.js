@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "./Form";
 import TodoList from "./TodoList";
-import db from "./Firebase/firebase";
+import db from "../Firebase/firebase";
 
 const Home = ({ handleLogout }) => {
   var email = db.auth().currentUser.email;

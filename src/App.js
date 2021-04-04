@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import LogIn from "./LogIn";
-import Home from "./Home";
+import LogIn from "./Components/LogIn";
+import Home from "./Components/Home";
 import db from "./Firebase/firebase";
 const App = () => {
   const [user, setUser] = useState("");
