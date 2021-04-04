@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import db from "./Firebase/firebase";
 
 const Attach = () => {
-  const [fileUrl, setFileUrl] = React.useState(null);
+  const [fileUrl, setFileUrl] = useState("");
   const onChange = async (e) => {
     const file = e.target.files[0];
     const storageRef = db.storage().ref();

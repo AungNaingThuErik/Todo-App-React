@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import db from "./Firebase/firebase";
 import "./App.css";
 
 export default function Todo({ todo }) {
-  // const [showFile, setFile] = React.useState(true);
+  const [fileShow, setFileShow] = useState("");
   //delete
   const deleteTodo = () => {
     const todoRef = db.database().ref("Todo").child(todo.id);
@@ -20,13 +20,14 @@ export default function Todo({ todo }) {
 
   //view
   const viewTodo = () => {
-    const todoRef = db.database().ref("Todo").child(todo.id);
+    var todoRef = db.database().ref("Todo").child(todo.id);
     todoRef.on("value", function (snapshot) {
       var todoList = snapshot.val();
-      console.log("Title: " + todoList.title);
-      console.log("Complete: " + todoList.complete);
-      console.log("User ID: " + todoList.userId);
-      // console.log(setFile(true));
+      // console.log("Title: " + todoList.title);
+      // console.log("Complete: " + todoList.complete);
+      console.log("File Ref: " + todoList.fileReference);
+      setFileShow(todoList.fileReference);
+      console.log(setFileShow(todoList.fileReference));
     });
   };
 
@@ -41,6 +42,7 @@ export default function Todo({ todo }) {
           />
         </>
       ) : null} */}
+      <img className="Todo-img" src={fileShow} alt="file" />
 
       <h1 className={todo.complete ? "complete" : ""}>{todo.title}</h1>
 
@@ -53,7 +55,6 @@ export default function Todo({ todo }) {
             {!todo.complete ? "Check" : "Uncheck"}
           </button>
           <button className="action_btn" onClick={viewTodo}>
-            {/* {!completeList ? "View" : "Attach"} */}
             View
           </button>
         </div>

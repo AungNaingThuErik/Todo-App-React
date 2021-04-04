@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import db from "./Firebase/firebase";
-import Attach from "./Attach";
 
 export default function Form() {
   const [title, setTitle] = useState("");
+  const [fileUrl, setFileUrl] = useState("");
+
+  const onFileChange = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = db.storage().ref();
+    const fileRef = storageRef.child(`images/${file.name}`);
+    await fileRef.put(file);
+    setFileUrl(await fileRef.getDownloadURL());
+  };
   const handleOnChange = (e) => {
     setTitle(e.target.value);
   };
@@ -16,9 +24,10 @@ export default function Form() {
       userId,
       title,
       complete: false,
-      // img: fileUrl
+      fileReference: fileUrl,
     };
     todoRef.push(todo);
+    setFileUrl("");
   };
   return (
     <div className="form-container">
@@ -26,7 +35,10 @@ export default function Form() {
       <button className="form-btn" onClick={createTodo}>
         Add Todo
       </button>
-      <Attach />
+      <label className="custom-file-upload">
+        <input type="file" onChange={onFileChange} />
+        Attach
+      </label>
     </div>
   );
 }
