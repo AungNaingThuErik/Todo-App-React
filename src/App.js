@@ -11,6 +11,10 @@ const App = () => {
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
 
+  useEffect(() => {
+    authListener();
+  });
+
   const clearInputs = () => {
     setEmail("");
     setPassword("");
@@ -33,6 +37,8 @@ const App = () => {
           case "auth/wrong-password":
             setPasswordError(err.message);
             break;
+          default:
+            break;
         }
       });
   };
@@ -49,6 +55,8 @@ const App = () => {
             break;
           case "auth/weak-password":
             setPasswordError(err.message);
+            break;
+          default:
             break;
         }
       });
@@ -69,9 +77,6 @@ const App = () => {
     });
   };
 
-  useEffect(() => {
-    authListener();
-  }, []);
   return (
     <div className="App">
       {user ? (

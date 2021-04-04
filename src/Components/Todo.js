@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import db from "../Firebase/firebase";
 import "../App.css";
 
 export default function Todo({ todo }) {
   const [fileShow, setFileShow] = useState("");
+  const [todoImage, setTodoImage] = useState(null);
+
+  useEffect(() => {
+    var todoRef = db.database().ref("Todo").child(todo.id);
+    todoRef.on("value", function (snapshot) {
+      var todoList = snapshot.val();
+      setTodoImage(todoList.fileReference);
+    });
+  });
   //delete
   const deleteTodo = () => {
     const todoRef = db.database().ref("Todo").child(todo.id);
@@ -34,13 +43,9 @@ export default function Todo({ todo }) {
 
   return (
     <div className="Todo-container">
-      {fileShow ? (
-        <>
-          <img className="Todo-img" src={fileShow} alt="Uploaded File" />
-        </>
-      ) : null}
-      {/* <img className="Todo-img" src={fileShow || ""} alt="file" /> */}
-
+      {fileShow && (
+        <img className="Todo-img" src={fileShow} alt="Uploaded File" />
+      )}
       <h1 className={todo.complete ? "complete" : ""}>{todo.title}</h1>
 
       <div className="buttons">
@@ -51,7 +56,11 @@ export default function Todo({ todo }) {
           <button className="action_btn" onClick={completeTodo}>
             {!todo.complete ? "Check" : "Uncheck"}
           </button>
-          <button className="action_btn" onClick={viewTodo}>
+          <button
+            className="action_btn"
+            onClick={viewTodo}
+            disabled={!todoImage}
+          >
             View
           </button>
         </div>

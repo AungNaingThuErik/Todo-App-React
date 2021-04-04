@@ -28,6 +28,12 @@ button:hover {
     background: #fff;
 }
 
+button:disabled {
+    color: red;
+    background-color: #fff;
+    cursor: default;
+}
+
 .login {
     width: 100%;
     min-height: 100vh;
@@ -140,6 +146,7 @@ button:hover {
     padding: 10px 15px;
     cursor: pointer;
     color: white;
+    margin: 0 0 0 5px;
 }
 
 .custom-file-upload:hover {
