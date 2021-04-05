@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import LogIn from "./Components/LogIn";
 import Home from "./Components/Home";
 import db from "./Firebase/firebase";
@@ -78,7 +77,7 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div>
       {user ? (
         <Home handleLogout={handleLogout} />
       ) : (

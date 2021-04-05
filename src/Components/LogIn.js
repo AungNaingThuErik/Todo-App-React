@@ -16,7 +16,7 @@ const LogIn = (props) => {
   return (
     <section className="login">
       <div className="loginContainer">
-        <label>UserName</label>
+        <label>Email</label>
         <input
           type="text"
           autoFocus
